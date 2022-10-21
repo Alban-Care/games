@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShiFuMi</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="main">
+      <section class="container text-center">
+        <h1 class="fs-1">Traditional ShiFuMi</h1>
+        <p class="description">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
+          accusamus dolore reprehenderit cum vel quo maiores, explicabo
+          deserunt. Labore ratione soluta modi magni dicta similique dolore
+          nemo, maxime neque nihil commodi sit.
+        </p>
+        <div id="traditional" class="traditional game">
+          <div class="overlay"></div>
+          <div id="scores" class="scores">
+            <h2 class="fs-2 border-bottom">Results</h2>
+            <div class="score-group">
+              <div class="score-item">
+                <h3 class="fs-3">winner</h3>
+                <div class="win-item">0</div>
+              </div>
+              <div class="score-item">
+                <h3 class="fs-3">egality</h3>
+                <div class="egality-item">0</div>
+              </div>
+              <div class="score-item">
+                <h3 class="fs-3">loser</h3>
+                <div class="lose-item">0</div>
+              </div>
+            </div>
+          </div>
+          <div id="cards" class="cards">
+            <h2 class="fs-2 border-bottom">Cartes</h2>
+            <div class="card-group">
+              <button type="button" class="card-item">shi</button>
+              <button type="button" class="card-item">fu</button>
+              <button type="button" class="card-item">mi</button>
+            </div>
+          </div>
+        </div>
+        <div>
+
+        </div id="rounds" class="rounds">
+        <ul class="round-group">
+          <li class="round">
+            <strong class="strong">Round 1 : </strong>
+            <span id="player">Player play "SHI"</span>
+            <span id="computer">Computer play "SHI"</span>
+          </li>
+          <li class="round">
+            <strong class="strong">Round 2 : </strong
+            ><span id="player">Player play "FU"</span>
+            <span id="computer">Computer play "SHI"</span>
+          </li>
+          <li class="round">
+            <strong class="strong">Round 3 : </strong>
+            <span id="player">Player play "SHI"</span>
+            <span id="computer">Computer play "MI"</span>
+          </li>
+        </ul>
+        <button type="button" class="btn btn-play">Test this variant</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
