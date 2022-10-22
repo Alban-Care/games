@@ -1,19 +1,22 @@
 /* Score array */
 const shi = {
+  value: "shi",
   shi: "egality",
-  fu: "lose",
-  mi: "win",
+  fu: "win",
+  mi: "lose",
 };
 
 const fu = {
+  value: "fu",
   shi: "lose",
   fu: "egality",
   mi: "win",
 };
 
 const mi = {
-  shi: "lose",
-  fu: "win",
+  value: "mi",
+  shi: "win",
+  fu: "lose",
   mi: "egality",
 };
 
@@ -117,7 +120,7 @@ function displayRound() {
 
   let computer = document.createElement("span");
   computer.setAttribute("id", "computer");
-  computer.textContent = `Computer play "${inGame.computer}"`;
+  computer.textContent = `Computer play "${inGame.computer.toUpperCase()}"`;
 
   li.appendChild(strong).appendChild(player).appendChild(computer);
 
@@ -127,10 +130,11 @@ function displayRound() {
 /* Result functions */
 
 function ckeckResponses(playerResponse) {
+  let computerResponse = getComputerCard();
+  inGame.computer = computerResponse.value;
   inGame.player = playerResponse;
-  inGame.computer = getComputerCard();
 
-  let result = inGame.computer[playerResponse]; // return win, lose or egality
+  let result = computerResponse[playerResponse]; // return win, lose or egality
   if (result == "win") inGame.score.win++;
   if (result == "lose") inGame.score.lose++;
   if (result == "egality") inGame.score.egality++;
