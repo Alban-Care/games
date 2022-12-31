@@ -13,21 +13,21 @@ const inGame = { round: 1, score, player: "", computer: "" };
 let roundsGame = 3;
 
 /* ShiFuMi eventListener cards */
-const tradutionalPath = "#traditional>#cards>.card-group>";
+const traditionalPath = "#traditional>#cards>.card-group>";
 
-const shiButton = document.querySelector(`${tradutionalPath}#shi`);
+const shiButton = document.querySelector(`${traditionalPath}#shi`);
 shiButton.addEventListener("click", () => {
   inGame.round++;
   checkResponses("shi");
 });
 
-const fuButton = document.querySelector(`${tradutionalPath}#fu`);
+const fuButton = document.querySelector(`${traditionalPath}#fu`);
 fuButton.addEventListener("click", () => {
   inGame.round++;
   checkResponses("fu");
 });
 
-const miButton = document.querySelector(`${tradutionalPath}#mi`);
+const miButton = document.querySelector(`${traditionalPath}#mi`);
 miButton.addEventListener("click", () => {
   inGame.round++;
   checkResponses("mi");
