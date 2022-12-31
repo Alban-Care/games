@@ -1,66 +1,37 @@
-/* Score array */
-const shi = {
-  value: "shi",
-  shi: "egality",
-  fu: "win",
-  mi: "lose",
-};
-
-const fu = {
-  value: "fu",
-  shi: "lose",
-  fu: "egality",
-  mi: "win",
-};
-
-const mi = {
-  value: "mi",
-  shi: "win",
-  fu: "lose",
-  mi: "egality",
-};
-
 const response = [shi, fu, mi];
 
-/* Initial data */
-let score = {
-  win: 0,
-  lose: 0,
-  egality: 0,
-};
+/* Score array */
+const shi = { value: "shi", shi: "egality", fu: "win", mi: "lose" };
+const fu = { value: "fu", shi: "lose", fu: "egality", mi: "win" };
+const mi = { value: "mi", shi: "win", fu: "lose", mi: "egality" };
 
-let inGame = {
-  round: 1,
-  score,
-  player: "",
-  computer: "",
-};
+/* Initial data */
+const score = { win: 0, lose: 0, egality: 0 };
+const inGame = { round: 1, score, player: "", computer: "" };
 
 /* Game default data configuration */
-
 let roundsGame = 3;
 
 /* ShiFuMi eventListener cards */
-let tradutionalPath = "#traditional>#cards>.card-group>";
+const tradutionalPath = "#traditional>#cards>.card-group>";
 
-document
-  .querySelector(`${tradutionalPath}#shi`)
-  .addEventListener("click", () => {
-    inGame.round++;
-    ckeckResponses("shi");
-  });
-document
-  .querySelector(`${tradutionalPath}#fu`)
-  .addEventListener("click", () => {
-    inGame.round++;
-    ckeckResponses("fu");
-  });
-document
-  .querySelector(`${tradutionalPath}#mi`)
-  .addEventListener("click", () => {
-    inGame.round++;
-    ckeckResponses("mi");
-  });
+const shiButton = document.querySelector(`${tradutionalPath}#shi`);
+shiButton.addEventListener("click", () => {
+  inGame.round++;
+  checkResponses("shi");
+});
+
+const fuButton = document.querySelector(`${tradutionalPath}#fu`);
+fuButton.addEventListener("click", () => {
+  inGame.round++;
+  checkResponses("fu");
+});
+
+const miButton = document.querySelector(`${tradutionalPath}#mi`);
+miButton.addEventListener("click", () => {
+  inGame.round++;
+  checkResponses("mi");
+});
 
 /* utils function */
 function getRandomInt(max) {
@@ -78,47 +49,48 @@ function gameInitialization() {
 }
 
 function domUpdateOnGameLaunch() {
-  let btn = document.querySelector(".btn-play");
+  const btn = document.querySelector(".btn-play");
   btn.setAttribute("disabled", "");
 
-  let overlay = document.querySelector("#traditional>.overlay");
+  const overlay = document.querySelector("#traditional>.overlay");
   overlay.remove();
 
   displayCountRound(inGame.round);
 }
 
 /* Rounds functions */
-
 function getComputerCard() {
-  let index = getRandomInt(response.length);
+  const index = getRandomInt(response.length);
   return response[index];
 }
 
 function displayCountRound(round) {
-  document.querySelector(
-    "#traditional>#cards>h2"
-  ).textContent = `Round ${round} : select a card`;
+  const roundElement = document.querySelector("#traditional>#cards>h2");
+  roundElement.textContent = `Round ${round} : select a card`;
 }
 
 function displayScore() {
-  document.querySelector(".win-item").textContent = inGame.score.win;
-  document.querySelector(".egality-item").textContent = inGame.score.egality;
-  document.querySelector(".lose-item").textContent = inGame.score.lose;
+  const winItem = document.querySelector(".win-item");
+  winItem.textContent = inGame.score.win;
+  const egalityItem = document.querySelector(".egality-item");
+  egalityItem.textContent = inGame.score.egality;
+  const loseItem = document.querySelector(".lose-item");
+  loseItem.textContent = inGame.score.lose;
 }
 
 function displayRound() {
-  let li = document.createElement("li");
+  const li = document.createElement("li");
   li.classList.add("round");
 
-  let strong = document.createElement("strong");
+  const strong = document.createElement("strong");
   strong.classList.add("strong");
   strong.textContent = `Round ${inGame.round} : `;
 
-  let player = document.createElement("span");
+  const player = document.createElement("span");
   player.setAttribute("id", "player");
   player.textContent = `You play "${inGame.player.toUpperCase()}" `;
 
-  let computer = document.createElement("span");
+  const computer = document.createElement("span");
   computer.setAttribute("id", "computer");
   computer.textContent = `Computer play "${inGame.computer.toUpperCase()}"`;
 
@@ -128,13 +100,12 @@ function displayRound() {
 }
 
 /* Result functions */
-
 function ckeckResponses(playerResponse) {
-  let computerResponse = getComputerCard();
+  const computerResponse = getComputerCard();
   inGame.computer = computerResponse.value;
   inGame.player = playerResponse;
 
-  let result = computerResponse[playerResponse]; // return win, lose or egality
+  const result = computerResponse[playerResponse]; // return win, lose or egality
   if (result == "win") inGame.score.win++;
   if (result == "lose") inGame.score.lose++;
   if (result == "egality") inGame.score.egality++;
@@ -145,7 +116,6 @@ function ckeckResponses(playerResponse) {
 }
 
 /* Start function */
-
 function startTraditionalGame() {
   gameInitialization();
   domUpdateOnGameLaunch();
